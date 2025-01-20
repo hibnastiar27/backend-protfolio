@@ -1,23 +1,26 @@
 const express = require("express");
-const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("./swagger/swaggerConfig"); // Import konfigurasi Swagger
-const app = express();
+const { swaggerUi, swaggerDocument } = require("./swagger/swaggerConfig");
 
-// Menyajikan dokumentasi Swagger UI di /api-docs
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// Import route API
-const apiRoutes = require("./routes/apiRoutes");
 const aboutRoutes = require("./routes/about");
+const authRoutes = require("./routes/auth");
 const educationsRoutes = require("./routes/educations");
 const experiencesRoutes = require("./routes/experiences");
 const projectRoutes = require("./routes/project");
 
-app.use("/v1", apiRoutes); // Menggunakan routing API
-app.use("/v1", aboutRoutes); // Menggunakan routing API
-app.use("/v1", educationsRoutes); // Menggunakan routing API
-app.use("/v1", experiencesRoutes); // Menggunakan routing API
-app.use("/v1", projectRoutes); // Menggunakan routing API
+const app = express();
+
+const connectDB = require("./db");
+require("dotenv").config();
+
+connectDB();
+
+app.use(express.json());
+
+// Menyajikan dokumentasi Swagger UI di /api-docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.use("/v1", aboutRoutes);
+app.use("/v1", authRoutes);
 
 // Server berjalan di port 3000
 const PORT = 3030;

@@ -1,0 +1,32 @@
+/v1/about:
+  get:
+    tags: 
+      - About
+    summary: Mendapatkan Data About Me 
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Nur Aria Hibnastiar
+                occupation:
+                  type: string
+                  example: Fullstack Website Developer
+                description:
+                  type: string
+                  example: Saya meruapakan mahasiswa angkatan 2021 prodi teknik informatika di ITN Malang
+                photos: 
+                  type: string
+                  example: link
+                skils:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    img:
+                      type: string
