@@ -1,7 +1,10 @@
 const express = require("express");
+const authMiddleware = require("../middleware/authMiddleware");
 const aboutRouter = express.Router();
 
-aboutRouter.get("/about", (req, res) => {
+// aboutRouter.use(authMiddleware);
+
+aboutRouter.get("/about", authMiddleware, (req, res) => {
   const about = {
     name: "Nur Aria Hibnastiar",
     occupation: "Design Grafis",
