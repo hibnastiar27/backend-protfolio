@@ -1,5 +1,5 @@
 const express = require("express");
-const { swaggerUi, swaggerDocument } = require("./swagger/swaggerConfig");
+const { swaggerUi, swaggerDocument } = require("./docs/swaggerConfig");
 
 const aboutRoutes = require("./routes/about");
 const authRoutes = require("./routes/auth");

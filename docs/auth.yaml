@@ -1,0 +1,77 @@
+/v1/register:
+  get:
+    summary: Create User
+    tags: 
+      - Auth
+    parameters:
+      - name: name
+        in: header
+        description: Nama Lengkap 
+        required: true
+        schema:
+          type: string
+          example: Nur Aria
+      - name: email
+        in: header
+        description: Email
+        required: true
+        schema:
+          type: string
+          example: test@gmail.com
+      - name: password
+        in: header
+        description: Password
+        required: true
+        schema:
+          type: string
+          example: test2727
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Nur Aria
+                email:
+                  type: string
+                  example: test@gmail.com
+                password:
+                  type: string
+                  example: test2727
+--- 
+/v1/login:
+  get:
+    summary: Auth Login
+    tags: 
+      - Auth
+    responses:
+      200:
+        description: success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Nur Aria Hibnastiar
+                occupation:
+                  type: string
+                  example: Fullstack Website Developer
+                description:
+                  type: string
+                  example: Saya meruapakan mahasiswa angkatan 2021 prodi teknik informatika di ITN Malang
+                photos: 
+                  type: string
+                  example: link
+                skils:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    img:
+                      type: string
